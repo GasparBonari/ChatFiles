@@ -83,7 +83,7 @@ def handle_user_input(question):
 
 def main():
     load_dotenv()
-    st.set_page_config(page_title='Chat with Your own PDFs', page_icon=':books:')
+    st.set_page_config(page_title='Chat with Your Manual', page_icon=':books:')
 
     st.write(css, unsafe_allow_html=True)
     
@@ -93,15 +93,15 @@ def main():
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
     
-    st.header('Chat with Your own PDFs :books:')
-    question = st.text_input("Ask anything to your PDF: ")
+    st.header('Chat with Your Manual :books:')
+    question = st.text_input("Ask anything to your manual: ")
 
     if question:
         handle_user_input(question)
     
 
     with st.sidebar:
-        st.subheader("Upload your Documents Here: ")
+        st.subheader("Upload your file Here: ")
         pdf_files = st.file_uploader("Choose your PDF Files and Press OK", type=['pdf'], accept_multiple_files=True)
 
         if st.button("OK"):
