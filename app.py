@@ -82,10 +82,12 @@ def handle_user_input(question):
 
 
 def main():
-    load_dotenv()
+    # load_dotenv()
     st.set_page_config(page_title='Chat with Your Manual', page_icon=':books:')
 
     st.write(css, unsafe_allow_html=True)
+
+    api_key = st.secrets["YOUR_SECRET"]
     
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
