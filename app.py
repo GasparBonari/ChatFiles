@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 from dotenv import load_dotenv
 from PyPDF2 import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
@@ -80,14 +81,18 @@ def handle_user_input(question):
             st.write(bot_template.replace("{{MSG}}", message.content), unsafe_allow_html=True)
 
 
-
 def main():
-    # load_dotenv()
+    load_dotenv()
     st.set_page_config(page_title='Chat with Your Manual', page_icon=':books:')
 
     st.write(css, unsafe_allow_html=True)
 
-    api_key = st.secrets["YOUR_SECRET"]
+    # st.write("Secret Key", st.secrets["openai_secret_key"])
+
+    st.write(
+        "Has environment variables been set:",
+        os.environ["openai_secret_key"] == st.secrets["openai_secret_key"],
+    )
     
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
