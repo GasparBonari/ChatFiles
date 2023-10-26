@@ -91,7 +91,7 @@ def main():
 
     st.write(
         "Has environment variables been set:",
-        os.environ["openai_secret_key"] == st.secrets["openai_secret_key"],
+        os.environ["OPENAI_API_KEY"] == st.secrets["OPENAI_API_KEY"]
     )
     
     if "conversation" not in st.session_state:
